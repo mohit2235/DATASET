@@ -40,3 +40,10 @@ SELECT AVG(state_bottle_retail)AS RETAIL_PRICE,county,
  group by city
  order by REVENUE DESC
  LIMIT 1
+ 
+ #WHICH VENDOR EARNS HIGHEST REVENUE PER LITRE OF ALCOHOL SOLD
+ SELECT AVG(volume_sold_liters/NULLIF(sale_dollars,0))AS REVENUE,vendor_name,
+ FROM `bigquery-public-data.iowa_liquor_sales.sales`
+ group by vendor_name
+ order by REVENUE DESC
+ LIMIT 10
