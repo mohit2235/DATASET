@@ -1,3 +1,11 @@
+#WHAT IS THE MOST EXPENSIVE CATEGORY OF ALCOHOL AND HOW MUCH TAX IS COLLECTED ?
+SELECT AVG(sale_dollars/NULLIF(volume_sold_gallons,0))AS MOST_EXPENSIVE,
+AVG(state_bottle_retail-state_bottle_cost) AS TAX_COLLECTED,category_name
+ FROM `bigquery-public-data.iowa_liquor_sales.sales`
+ group by category_name
+ order by MOST_EXPENSIVE DESC
+ LIMIT 10
+
 #ALCOHOL CATEGORY EARNING MAXIMUM REVENUE
 SELECT AVG(sale_dollars) as revenue,COUNT(bottles_sold) AS TOTAL_BOTTLES_SOLD,category_name
  FROM `bigquery-public-data.iowa_liquor_sales.sales`
