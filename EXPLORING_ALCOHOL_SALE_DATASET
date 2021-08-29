@@ -49,8 +49,8 @@ SELECT AVG(state_bottle_retail)AS RETAIL_PRICE,county,
  LIMIT 10
  
  #WHICH VENDOR SELLS THE MOST COSTLY PER BOTTLE ALCOHOL
- SELECT SUM(sale_dollars/NULLIF(bottles_sold,0))AS REVENUE,vendor_name,
+ SELECT SUM(sale_dollars/NULLIF(bottles_sold,0))AS MAXIMUM_COST,vendor_name,
  FROM `bigquery-public-data.iowa_liquor_sales.sales`
  group by vendor_name
- order by REVENUE DESC
+ order by MAXIMUM_COST DESC
  LIMIT 10
